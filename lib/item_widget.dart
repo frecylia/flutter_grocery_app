@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_grocery_ui/data.dart';
+
 import 'package:flutter_grocery_ui/product_detail.dart';
 
 import 'models/product.dart';

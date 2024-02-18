@@ -25,8 +25,8 @@ class ProductSuccess extends ProductState {
     this.page,
     this.size,
     this.hasMore,
-  });
-  
+  });  
+
 
   @override
   String toString() {

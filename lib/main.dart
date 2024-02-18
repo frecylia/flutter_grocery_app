@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_grocery_ui/item_widget.dart';
 
 import 'bloc/product_bloc.dart';
-import 'data.dart';
+
 import 'models/product.dart';
 
 void main() {
@@ -17,14 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductBloc()..add(GetProductEvent()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      create: (context) => ProductBloc(),
+      child: BlocProvider(
+        create: (context) => ProductBloc()..add(GetProductEvent()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MainPage(),
         ),
-        home: const MainPage(),
       ),
     );
   }
@@ -129,22 +132,6 @@ class _MainPageState extends State<MainPage> {
               if (state.status == Status.success) {
                 products = state.products!;
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                // return Container(
-                //   padding: const EdgeInsets.all(10),
-                //   child: GridView.builder(
-                //     controller: controller,
-                //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                //       mainAxisSpacing: 10,
-                //       crossAxisSpacing: 10,
-                //       crossAxisCount: 2,
-                //       childAspectRatio: 0.65,
-                //     ),
-                //     itemBuilder: (context, index) {
-                //       return ItemWidget(product: products[index]);
-                //     },
-                //     itemCount: products.length,
-                //   ),
-                // );
               }
               return Container(
                 padding: const EdgeInsets.all(10),

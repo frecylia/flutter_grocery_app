@@ -1,3 +1,5 @@
+
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import '../models/product.dart';
@@ -9,8 +11,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductSuccess> {
   ProductBloc() : super(ProductSuccess(status: Status.initial)) {
     on<GetProductEvent>((event, emit) async {
       emit(state.copyWith(status: Status.loading));
-      final response = await http.get(
-        Uri.parse('https://api.escuelajs.co/api/v1/products?offset=0&limit=10'),
+      final response = await http.get(Uri.parse
+      ('https://api.escuelajs.co/api/v1/products?offset=0&limit=10'),
         headers: {
           "Content-Type": "application/json",
         },
